@@ -100,8 +100,8 @@
       "**/src/utils/emailTemplates/**",
       "**/src/middlewares/**",
       "**/src/validation**",
-      "**src/test/**",
-      "**/ui/**"
+      "**/test/**",
+      "**/docs/**"
     ],
     "all": true
   },

@@ -1,6 +1,7 @@
 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
-  const users = sequelize.define('users', {
+  const Users = sequelize.define('Users', {
     email: DataTypes.STRING,
     mobile_number: DataTypes.STRING,
     first_name: DataTypes.STRING,
@@ -9,10 +10,16 @@ module.exports = (sequelize, DataTypes) => {
     local_government_area: DataTypes.STRING,
     address: DataTypes.STRING,
     is_verified: DataTypes.BOOLEAN,
+    password: DataTypes.STRING
   }, {});
 
-  users.associate = (models) => {
-    users.hasMany(models.requests, { as: 'cart', foreignKey: 'user_id' });
+  Users.associate = models => {
+    Users.hasMany(models.Cart, {
+      as: 'carts',
+      foreignKey: 'user_id'
+    });
   };
-  return users;
+
+  return Users;
 };
+//# sourceMappingURL=users.js.map

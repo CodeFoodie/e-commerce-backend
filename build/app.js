@@ -15,9 +15,11 @@ var _cookieParser = _interopRequireDefault(require("cookie-parser"));
 
 var _path = _interopRequireDefault(require("path"));
 
+var _routes = _interopRequireDefault(require("./routes"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import router from './routes';
+/* eslint-disable no-unused-vars */
 (0, _dotenv.config)();
 const PORT = process.env.PORT || 5000; // Create global app object
 
@@ -40,14 +42,14 @@ app.use(_bodyParser.default.text());
 app.use(_bodyParser.default.json({
   type: 'application/json'
 }));
-app.use(_express.default.static('./ui'));
+app.use(_express.default.static('./docs'));
 app.use((0, _cookieParser.default)());
 const isProduction = process.env.NODE_ENV === 'production'; // base route response
 
 app.get('/', (req, res) => {
-  res.sendFile(_path.default.resolve('./ui/index.html'));
-}); // app.use('/api/v1/', router);
-// catch 404 and forward to error handler
+  res.sendFile(_path.default.resolve('./docs/index.html'));
+});
+app.use('/api/v1/', _routes.default); // catch 404 and forward to error handler
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');

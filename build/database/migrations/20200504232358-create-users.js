@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Users', {
@@ -49,3 +50,4 @@ module.exports = {
     return queryInterface.dropTable('Users');
   }
 };
+//# sourceMappingURL=20200504232358-create-users.js.map

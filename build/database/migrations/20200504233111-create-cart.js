@@ -1,38 +1,27 @@
 'use strict';
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Users', {
+    return queryInterface.createTable('Carts', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      email: {
+      items: {
         type: Sequelize.STRING
       },
-      mobile_number: {
-        type: Sequelize.STRING
+      subtotal: {
+        type: Sequelize.INTEGER
       },
-      first_name: {
-        type: Sequelize.STRING
-      },
-      last_name: {
-        type: Sequelize.STRING
-      },
-      state: {
-        type: Sequelize.STRING
-      },
-      local_government_area: {
-        type: Sequelize.STRING
-      },
-      address: {
-        type: Sequelize.STRING
-      },
-      is_verified: {
+      shipping: {
         type: Sequelize.BOOLEAN
       },
-      password: {
+      total: {
+        type: Sequelize.INTEGER
+      },
+      status: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -46,6 +35,7 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Users');
+    return queryInterface.dropTable('Carts');
   }
 };
+//# sourceMappingURL=20200504233111-create-cart.js.map

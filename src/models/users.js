@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     state: DataTypes.STRING,
     local_government_area: DataTypes.STRING,
     address: DataTypes.STRING,
-    is_verified: DataTypes.BOOLEAN
+    is_verified: DataTypes.BOOLEAN,
+    password: DataTypes.STRING
   }, {});
   
   Users.associate = (models) => {

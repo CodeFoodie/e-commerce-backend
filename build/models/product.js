@@ -1,11 +1,12 @@
 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
-  const product = sequelize.define('product', {
+  const Product = sequelize.define('Product', {
     image_url: DataTypes.STRING,
     is_available: DataTypes.BOOLEAN,
     price: DataTypes.INTEGER,
     description: DataTypes.STRING
   }, {});
-
-  return product;
+  return Product;
 };
+//# sourceMappingURL=product.js.map
