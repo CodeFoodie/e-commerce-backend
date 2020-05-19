@@ -43,7 +43,7 @@ export default class Authentication {
       // eslint-disable-next-line camelcase
       const { id, first_name } = user;
       const token = await Jwt.generateToken({ id, first_name });
-      const link = `${baseUrl}/createpassword?token=${token}`;
+      const link = `${baseUrl}/createpassword.html?token=${token}`;
       await services.sendEmail(email, 'welcome', { first_name, link });
       return successResponse(res, status.created, messages.signUp.success, response, token);
     } catch (error) {
