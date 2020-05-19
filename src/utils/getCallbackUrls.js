@@ -6,8 +6,8 @@ const testEnvironment = !(environment === 'development' || environment === 'stag
 const productionEnvironment = (environment === 'production') || (environment === 'staging');
 let baseUrl;
 
-if (productionEnvironment) baseUrl = 'https://dearmac.herokuapp.com/api/v1';
-else baseUrl = 'http://localhost:3000/api/v1';
+if (productionEnvironment) baseUrl = 'https://dbullssquad-frontend.herokuapp.com';
+else baseUrl = 'http://localhost:5000/api/v1';
 
 const googleCallbackUrl = `${baseUrl}/auth/google/callback`;
 const facebookCallbackUrl = `${baseUrl}/auth/facebook/callback`;

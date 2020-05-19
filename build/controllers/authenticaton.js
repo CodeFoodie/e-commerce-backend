@@ -69,7 +69,7 @@ class Authentication {
         id,
         first_name
       });
-      const link = `${baseUrl}/users/createpassword?token=${token}`;
+      const link = `${baseUrl}/createpassword?token=${token}`;
       await services.sendEmail(email, 'welcome', {
         first_name,
         link

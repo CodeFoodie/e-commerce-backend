@@ -102,7 +102,7 @@ const welcome = data => {
                                                                               <tbody>
                                                                                   <tr>
                                                                                       <td class="esd-block-text es-p35t es-p5b es-p30r es-p30l" align="center">
-                                                                                          <h1>Welcome ${first_name}</h1>
+                                                                                          <h1>Welcome ${first_name},</h1>
                                                                                       </td>
                                                                                   </tr>
                                                                                   <tr>
