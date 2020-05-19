@@ -4,7 +4,7 @@ import { emailTemplatesFunction } from '../utils';
 
 dotenv.config();
 
-sgMail.setApiKey(process.env.ESTORE_SENDGRID_API_KEY);
+sgMail.setApiKey(process.env.DBULLSSQUAD_SENDGRID);
 
 /**
  * Creates an instance of sendMail.
@@ -27,7 +27,7 @@ const sendEmail = async (receiver, category, data) => {
     } = retrievedData;
     const msg = {
       to: receiver,
-      from: 'hello@dbullssquad.com',
+      from: 'dbullssquad@dbullssquad.com',
       subject,
       html,
     };

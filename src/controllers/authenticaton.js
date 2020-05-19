@@ -9,10 +9,18 @@ import {
 
 const { baseUrl } = getCallbackUrls;
 
+const association = [
+  {
+    model: models.Cart,
+    as: 'carts',
+    attributes: ['id', 'items', 'subtotal', 'shipping', 'total', 'status']
+  }
+];
+
 /**
- * @class UserController
- * @description Controllers for Users
- * @exports UsersController
+ * @class Authentication
+ * @description Controllers for Authentication
+ * @exports Authentication
  */
 export default class Authentication {
   /**
@@ -31,6 +39,7 @@ export default class Authentication {
       }
       const user = await models.Users.create(req.body);
       const response = user.toJSON();
+      delete response.password;
       // eslint-disable-next-line camelcase
       const { id, first_name } = user;
       const token = await Jwt.generateToken({ id, first_name });
@@ -80,12 +89,12 @@ export default class Authentication {
   static async signInUser(req, res) {
     try {
       const { email, password } = req.body;
-      const user = await models.Users.findOne({ where: { email } });
+      const user = await models.Users.findOne({ where: { email }, include: association });
       if (!user) {
         return errorResponse(res, status.unauthorized, messages.signIn.invalid);
       }
       const {
-        id, mobile_number, first_name, last_name, is_verified, state, local_government_area, address
+        id, mobile_number, first_name, last_name, is_verified, state, local_government_area, address, carts
       } = user;
 
       if (!is_verified) {
@@ -98,7 +107,7 @@ export default class Authentication {
       }
 
       const response = {
-        id, email, mobile_number, first_name, last_name, is_verified, state, local_government_area, address
+        id, email, mobile_number, first_name, last_name, is_verified, state, local_government_area, address, carts
       };
       const token = await Jwt.generateToken({ id });
       return successResponse(res, status.success, messages.signIn.success, response, token);

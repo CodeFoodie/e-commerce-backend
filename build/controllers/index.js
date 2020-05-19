@@ -9,26 +9,16 @@ Object.defineProperty(exports, "Authentication", {
     return _authenticaton.default;
   }
 });
-exports.falseObject = void 0;
+Object.defineProperty(exports, "Product", {
+  enumerable: true,
+  get: function () {
+    return _product.default;
+  }
+});
 
 var _authenticaton = _interopRequireDefault(require("./authenticaton"));
 
+var _product = _interopRequireDefault(require("./product"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// import ResetPasswordController from './resetPassword';
-// import AccommodationController from './accommodationController';
-// import RoomController from './roomController';
-
-/*
-export {
-  UsersController,
-  ResetPasswordController,
-  AccommodationController,
-  RoomController
-};
-*/
-const falseObject = {
-  property: 'property'
-};
-exports.falseObject = falseObject;
 //# sourceMappingURL=index.js.map

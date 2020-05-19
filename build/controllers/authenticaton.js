@@ -23,10 +23,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const {
   baseUrl
 } = _index.getCallbackUrls;
+const association = [{
+  model: _models.default.Cart,
+  as: 'carts',
+  attributes: ['id', 'items', 'subtotal', 'shipping', 'total', 'status']
+}];
 /**
- * @class UserController
- * @description Controllers for Users
- * @exports UsersController
+ * @class Authentication
+ * @description Controllers for Authentication
+ * @exports Authentication
  */
 
 class Authentication {
@@ -53,7 +58,8 @@ class Authentication {
       }
 
       const user = await _models.default.Users.create(req.body);
-      const response = user.toJSON(); // eslint-disable-next-line camelcase
+      const response = user.toJSON();
+      delete response.password; // eslint-disable-next-line camelcase
 
       const {
         id,
@@ -132,7 +138,8 @@ class Authentication {
       const user = await _models.default.Users.findOne({
         where: {
           email
-        }
+        },
+        include: association
       });
 
       if (!user) {
@@ -147,7 +154,8 @@ class Authentication {
         is_verified,
         state,
         local_government_area,
-        address
+        address,
+        carts
       } = user;
 
       if (!is_verified) {
@@ -169,14 +177,14 @@ class Authentication {
         is_verified,
         state,
         local_government_area,
-        address
+        address,
+        carts
       };
       const token = await _index.Jwt.generateToken({
         id
       });
       return (0, _index.successResponse)(res, _index.status.success, _index.messages.signIn.success, response, token);
     } catch (error) {
-      console.log(error);
       return (0, _index.errorResponse)(res, _index.status.error, _index.messages.signIn.error);
     }
   }

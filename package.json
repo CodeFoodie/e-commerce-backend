@@ -99,6 +99,7 @@
       "**/src/utils/emailTemplates/**",
       "**/src/middlewares/**",
       "**/src/validation**",
+      "**/src/controllers**",
       "**/test/**",
       "**/docs/**"
     ],

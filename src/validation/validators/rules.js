@@ -1,4 +1,4 @@
-import { body, param } from 'express-validator';
+import { body } from 'express-validator';
 import validatePhoneNumber from 'validate-phone-number-node-js';
 // import statesInNigeria from './NigerianStates';
 
@@ -61,6 +61,46 @@ export const signIn = [
     .not()
     .isEmpty(),
   body('password', 'password should be at least 6 characters')
+    .isLength({ min: 6 })
+    .not()
+    .isEmpty(),
+];
+
+export const addProduct = [
+  body('image_url', 'Please provide a valid image url')
+    .isURL(),
+  body('price', 'Price should be a valid numeric value')
+    .isInt()
+    .not()
+    .isEmpty(),
+  body('description', 'Please provide a comprehensive description')
+    .isLength({ min: 6 })
+    .not()
+    .isEmpty(),
+];
+
+export const addCart = [
+  body('user_id', 'Please provide a valid user')
+    .isInt()
+    .not()
+    .isEmpty(),
+  body('items', 'Please provide valid list of items')
+    .isArray()
+    .not()
+    .isEmpty(),
+  body('subtotal', 'Please provide a valid numeric value')
+    .isInt()
+    .not()
+    .isEmpty(),
+  body('shipping', 'Please provide shiiping preference')
+    .isBoolean()
+    .not()
+    .isEmpty(),
+  body('total', 'Please provide a valid numeric value')
+    .isInt()
+    .not()
+    .isEmpty(),
+  body('shipping_address', 'Please provide a comprehensive shipping address')
     .isLength({ min: 6 })
     .not()
     .isEmpty(),

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.signIn = exports.updatePassword = exports.signUp = exports.validateEmail = void 0;
+exports.addCart = exports.addProduct = exports.signIn = exports.updatePassword = exports.signUp = exports.validateEmail = void 0;
 
 var _expressValidator = require("express-validator");
 
@@ -54,4 +54,12 @@ const signIn = [(0, _expressValidator.body)('email', 'email is invalid, please p
   min: 6
 }).not().isEmpty()];
 exports.signIn = signIn;
+const addProduct = [(0, _expressValidator.body)('image_url', 'Please provide a valid image url').isURL(), (0, _expressValidator.body)('price', 'Price should be a valid numeric value').isInt().not().isEmpty(), (0, _expressValidator.body)('description', 'Please provide a comprehensive description').isLength({
+  min: 6
+}).not().isEmpty()];
+exports.addProduct = addProduct;
+const addCart = [(0, _expressValidator.body)('user_id', 'Please provide a valid user').isInt().not().isEmpty(), (0, _expressValidator.body)('items', 'Please provide valid list of items').isArray().not().isEmpty(), (0, _expressValidator.body)('subtotal', 'Please provide a valid numeric value').isInt().not().isEmpty(), (0, _expressValidator.body)('shipping', 'Please provide shiiping preference').isBoolean().not().isEmpty(), (0, _expressValidator.body)('total', 'Please provide a valid numeric value').isInt().not().isEmpty(), (0, _expressValidator.body)('shipping_address', 'Please provide a comprehensive shipping address').isLength({
+  min: 6
+}).not().isEmpty()];
+exports.addCart = addCart;
 //# sourceMappingURL=rules.js.map

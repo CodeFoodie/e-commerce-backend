@@ -15,7 +15,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 _dotenv.default.config();
 
-_mail.default.setApiKey(process.env.ESTORE_SENDGRID_API_KEY);
+_mail.default.setApiKey(process.env.DBULLSSQUAD_SENDGRID);
 /**
  * Creates an instance of sendMail.
  *
@@ -37,7 +37,7 @@ const sendEmail = async (receiver, category, data) => {
     } = retrievedData;
     const msg = {
       to: receiver,
-      from: 'hello@dbullssquad.com',
+      from: 'dbullssquad@dbullssquad.com',
       subject,
       html
     };
@@ -50,7 +50,6 @@ const sendEmail = async (receiver, category, data) => {
       };
     }
   } catch (error) {
-    console.log(error.response.body.errors);
     return {
       success: false,
       error

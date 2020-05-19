@@ -1,13 +1,10 @@
 import {
-  signUp, signIn, validateEmail, updatePassword
+  validateEmail, updatePassword, signIn, signUp, addProduct
 } from './validators/rules';
   
 const getValidator = (validationName) => {
   const rules = {
-    signUp,
-    signIn,
-    validateEmail,
-    updatePassword,
+    validateEmail, updatePassword, signIn, signUp, addProduct
   };
   
   return rules[validationName];

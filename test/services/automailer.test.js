@@ -11,7 +11,6 @@ const { email } = fakeData;
 
 let category;
 describe('Send Email Test', () => {
-  /*
   it('Should send Account verification mail successfuly', async function callBack() {
     this.timeout(20000);
     const link = `https://dbullssquad.herokuapp.com/createPassword/test/${token}`;
@@ -21,7 +20,7 @@ describe('Send Email Test', () => {
     result.success.should.equal(true);
     result.message.should.equal('Email sent successfully');
   });
-/*
+
   it('Should send Password Recovery mail successfuly', async function callBack() {
     this.timeout(20000);
     const link = `https://dearmac.herokuapp.com/resetPassword/test/${token}`;
@@ -61,6 +60,4 @@ describe('Send Email Test', () => {
     result.success.should.equal(false);
     result.should.have.property('error');
   });
-  */
 });
-

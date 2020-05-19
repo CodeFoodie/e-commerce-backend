@@ -1,15 +1,10 @@
 
 import { Router } from 'express';
 import userRoute from './api/authentication';
+import ProductRoute from './api/product';
 
 const router = new Router();
 router.use('/users', userRoute);
-/*
-router.use('/', resetPasswordRoute);
-router.use('/', accommodationRoute);
-router.use('/', roomRoute);
-router.use('/auth', authRoutes);
-router.use('/users', userRoute);
-router.use('/profiles', profileRoutes);
-*/
+router.use('/product', ProductRoute);
+
 export default router;

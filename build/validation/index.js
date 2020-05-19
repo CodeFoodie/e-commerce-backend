@@ -9,10 +9,11 @@ var _rules = require("./validators/rules");
 
 const getValidator = validationName => {
   const rules = {
-    signUp: _rules.signUp,
-    signIn: _rules.signIn,
     validateEmail: _rules.validateEmail,
-    updatePassword: _rules.updatePassword
+    updatePassword: _rules.updatePassword,
+    signIn: _rules.signIn,
+    signUp: _rules.signUp,
+    addProduct: _rules.addProduct
   };
   return rules[validationName];
 };
