@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     local_government_area: DataTypes.STRING,
     address: DataTypes.STRING,
     is_verified: DataTypes.BOOLEAN,
+    is_admin: DataTypes.BOOLEAN,
     password: DataTypes.STRING
   }, {});
 

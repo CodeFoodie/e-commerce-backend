@@ -69,7 +69,7 @@ class Authentication {
         id,
         first_name
       });
-      const link = `${baseUrl}/createpassword?token=${token}`;
+      const link = `${baseUrl}/createpassword.html?token=${token}`;
       await services.sendEmail(email, 'welcome', {
         first_name,
         link
@@ -152,6 +152,7 @@ class Authentication {
         first_name,
         last_name,
         is_verified,
+        is_admin,
         state,
         local_government_area,
         address,
@@ -175,13 +176,16 @@ class Authentication {
         first_name,
         last_name,
         is_verified,
+        is_admin,
         state,
         local_government_area,
         address,
         carts
       };
       const token = await _index.Jwt.generateToken({
-        id
+        id,
+        first_name,
+        is_admin
       });
       return (0, _index.successResponse)(res, _index.status.success, _index.messages.signIn.success, response, token);
     } catch (error) {

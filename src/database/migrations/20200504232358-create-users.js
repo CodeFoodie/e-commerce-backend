@@ -32,6 +32,9 @@ module.exports = {
       is_verified: {
         type: Sequelize.BOOLEAN
       },
+      is_admin: {
+        type: Sequelize.BOOLEAN
+      },
       password: {
         type: Sequelize.STRING
       },

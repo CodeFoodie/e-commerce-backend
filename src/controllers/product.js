@@ -36,7 +36,7 @@ export default class Product {
   */
   static async getAllProducts(req, res) {
     try {
-      const result = await models.Product.findAll();
+      const result = await models.Products.findAll();
       return successResponse(res, 200, 'All Products', result);
     } catch (error) {
       return errorResponse(res, 500, 'Error getting products');

@@ -94,7 +94,7 @@ export default class Authentication {
         return errorResponse(res, status.unauthorized, messages.signIn.invalid);
       }
       const {
-        id, mobile_number, first_name, last_name, is_verified, state, local_government_area, address, carts
+        id, mobile_number, first_name, last_name, is_verified, is_admin, state, local_government_area, address, carts
       } = user;
 
       if (!is_verified) {
@@ -107,9 +107,9 @@ export default class Authentication {
       }
 
       const response = {
-        id, email, mobile_number, first_name, last_name, is_verified, state, local_government_area, address, carts
+        id, email, mobile_number, first_name, last_name, is_verified, is_admin, state, local_government_area, address, carts
       };
-      const token = await Jwt.generateToken({ id });
+      const token = await Jwt.generateToken({ id, first_name, is_admin });
       return successResponse(res, status.success, messages.signIn.success, response, token);
     } catch (error) {
       return errorResponse(res, status.error, messages.signIn.error);
