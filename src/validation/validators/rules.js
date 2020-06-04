@@ -67,8 +67,13 @@ export const signIn = [
 ];
 
 export const addProduct = [
-  body('image_url', 'Please provide a valid image url')
-    .isURL(),
+  body('image_file').custom((value, { req }) => {
+    const image = req.file;
+    if (!image.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
+      throw new Error('Acepted image format only: jpg, jpeg, png, gif');
+    }
+    return true;
+  }),
   body('price', 'Price should be a valid numeric value')
     .isInt()
     .not()

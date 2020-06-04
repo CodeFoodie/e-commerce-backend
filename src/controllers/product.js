@@ -2,6 +2,10 @@
 /* eslint-disable camelcase */
 import models from '../models';
 import { status, successResponse, errorResponse } from '../utils/index';
+import middleWares from '../middlewares';
+
+const { cloudUpload } = middleWares;
+const { cloudinary } = cloudUpload;
 
 /**
  * @class Product
@@ -17,12 +21,23 @@ export default class Product {
    * @returns {object} response body object
    */
   static async addProduct(req, res) {
+    if (!req.user.is_admin) {
+      return errorResponse(res, 401, 'You need admin privilegde');
+    }
+    const result = await cloudinary.uploader.upload(req.file.path);
+    if (result.secure_url) {
+      req.body.image_url = result.secure_url;
+    } else {
+      return errorResponse(res, 500, 'Error uploading Image!, Please try again');
+    }
+
     try {
       req.body.is_available = true;
-      const product = await models.Product.create(req.body);
+      const product = await models.Products.create(req.body);
       const response = product.toJSON();
       return successResponse(res, status.created, 'Product added Successfully', response);
     } catch (error) {
+      console.log(error);
       return errorResponse(res, status.error, 'Unable to add product, please try again');
     }
   }

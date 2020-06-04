@@ -12,7 +12,7 @@ module.exports = {
       address: 'Behind Nitel',
       is_verified: true,
       is_admin: true,
-      password: '$2y$10$jDdpsXEZpxjddQblC387Iu8jXYRHkqyS4BVQTKLU5iCxpV4rJgbyK',
+      password: '$2y$10$Ib5NW7T1RHh6UQg3bLIh6O6/twfbxFvamEYVishpEXcLe9OgTUr4K',
       createdAt: new Date(),
       updatedAt: new Date()
     }]);

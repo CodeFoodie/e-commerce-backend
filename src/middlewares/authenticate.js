@@ -32,31 +32,6 @@ class Authenticate {
       return errorResponse(res, 500, 'Server error');
     }
   }
-
-  /**
-   * Verify if role is Admin or Super Admin
-   * @param  {object} req - The user request object
-   * @param  {object} res - The user res response object
-   * @param  {function} next - The next() Function
-   * @returns {String} req.userId - The user id
-   */
-  static async verifyAdmin(req, res, next) {
-    const { userId } = req.user;
-    const condition = {
-      where: {
-        userId, role: { [Sequelize.Op.or]: ['Admin', 'Super Admin'] }
-      },
-    };
-    try {
-      const verify = await Authenticate.findSuperUser(condition);
-      if (!verify) {
-        return errorResponse(res, 401, 'Access denied.');
-      }
-      return next();
-    } catch (error) {
-      return errorResponse(res, 500, 'Server error');
-    }
-  }
 }
 
 export default Authenticate;

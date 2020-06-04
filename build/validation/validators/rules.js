@@ -54,7 +54,17 @@ const signIn = [(0, _expressValidator.body)('email', 'email is invalid, please p
   min: 6
 }).not().isEmpty()];
 exports.signIn = signIn;
-const addProduct = [(0, _expressValidator.body)('image_url', 'Please provide a valid image url').isURL(), (0, _expressValidator.body)('price', 'Price should be a valid numeric value').isInt().not().isEmpty(), (0, _expressValidator.body)('description', 'Please provide a comprehensive description').isLength({
+const addProduct = [(0, _expressValidator.body)('image_file').custom((value, {
+  req
+}) => {
+  const image = req.file;
+
+  if (!image.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
+    throw new Error('Acepted image format only: jpg, jpeg, png, gif');
+  }
+
+  return true;
+}), (0, _expressValidator.body)('price', 'Price should be a valid numeric value').isInt().not().isEmpty(), (0, _expressValidator.body)('description', 'Please provide a comprehensive description').isLength({
   min: 6
 }).not().isEmpty()];
 exports.addProduct = addProduct;

@@ -2,7 +2,9 @@ import express from 'express';
 import { Product } from '../../controllers';
 import middleware from '../../middlewares';
 
-const { Authenticate, validate } = middleware;
+const { Authenticate, validate, cloudUpload } = middleware;
+
+const { attachFile } = cloudUpload;
 
 const {
   addProduct, getAllProducts, getProductById // , updateProduct, getProduct, deleteProduct
@@ -10,7 +12,7 @@ const {
 
 const router = express.Router();
 
-router.post('/add', Authenticate.verifyToken, validate('addProduct'), addProduct);
+router.post('/add', Authenticate.verifyToken, attachFile.single('image_file'), validate('addProduct'), addProduct);
 router.get('/getAll', getAllProducts);
 router.get('/getOne/:id', getProductById);
 /*
