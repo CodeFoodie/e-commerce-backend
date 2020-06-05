@@ -134,7 +134,7 @@ export default class Authentication {
       const { id, first_name } = userExits;
       const token = await Jwt.generateToken({ id, first_name });
       const link = `${baseUrl}/users/createPassword?token=${token}`;
-      await services.sendEmail(email, 'welcome', { first_name, link });
+      await services.sendEmail(email, 'passwordRecovery', { first_name, link });
       return successResponse(res, status.success, 'Password Reset Link sent Successfuly', { id, first_name, email }, token);
     } catch (error) {
       return errorResponse(res, 500, error.message);
