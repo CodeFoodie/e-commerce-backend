@@ -11,9 +11,9 @@ const { baseUrl } = getCallbackUrls;
 
 const association = [
   {
-    model: models.Cart,
+    model: models.Carts,
     as: 'carts',
-    attributes: ['id', 'items', 'subtotal', 'shipping', 'total', 'status']
+    attributes: ['id', 'user_id', 'user_email', 'items', 'subtotal', 'total', 'shipping_address', 'receipt_url', 'status']
   }
 ];
 
@@ -89,7 +89,9 @@ export default class Authentication {
   static async signInUser(req, res) {
     try {
       const { email, password } = req.body;
-      const user = await models.Users.findOne({ where: { email }, include: association });
+      const user = await models.Users.findOne({
+        where: { email }, include: association
+      });
       if (!user) {
         return errorResponse(res, status.unauthorized, messages.signIn.invalid);
       }
@@ -133,7 +135,7 @@ export default class Authentication {
       }
       const { id, first_name } = userExits;
       const token = await Jwt.generateToken({ id, first_name });
-      const link = `${baseUrl}/users/createPassword?token=${token}`;
+      const link = `${baseUrl}/users/createpassword.html?token=${token}`;
       await services.sendEmail(email, 'passwordRecovery', { first_name, link });
       return successResponse(res, status.success, 'Password Reset Link sent Successfuly', { id, first_name, email }, token);
     } catch (error) {

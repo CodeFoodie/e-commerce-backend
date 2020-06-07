@@ -68,7 +68,19 @@ const addProduct = [(0, _expressValidator.body)('image_file').custom((value, {
   min: 6
 }).not().isEmpty()];
 exports.addProduct = addProduct;
-const addCart = [(0, _expressValidator.body)('user_id', 'Please provide a valid user').isInt().not().isEmpty(), (0, _expressValidator.body)('items', 'Please provide valid list of items').isArray().not().isEmpty(), (0, _expressValidator.body)('subtotal', 'Please provide a valid numeric value').isInt().not().isEmpty(), (0, _expressValidator.body)('shipping', 'Please provide shiiping preference').isBoolean().not().isEmpty(), (0, _expressValidator.body)('total', 'Please provide a valid numeric value').isInt().not().isEmpty(), (0, _expressValidator.body)('shipping_address', 'Please provide a comprehensive shipping address').isLength({
+const addCart = [(0, _expressValidator.body)('image_file', 'Acepted image format only: jpg, jpeg, png, gif').custom((value, {
+  req
+}) => {
+  const image = req.file;
+
+  if (image && !image.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
+    throw new Error('Acepted image format only: jpg, jpeg, png, gif');
+  }
+
+  return true;
+}), (0, _expressValidator.body)('user_id', 'Please provide a valid user').isInt().not().isEmpty(), (0, _expressValidator.body)('items', 'Please provide a JSON.stringify array of cart items').isLength({
+  min: 6
+}).not().isEmpty(), (0, _expressValidator.body)('subtotal', 'Please provide a valid numeric value').isInt().not().isEmpty(), (0, _expressValidator.body)('total', 'Please provide a valid numeric value').isInt().not().isEmpty(), (0, _expressValidator.body)('shipping_address', 'Please provide a comprehensive shipping address').isLength({
   min: 6
 }).not().isEmpty()];
 exports.addCart = addCart;

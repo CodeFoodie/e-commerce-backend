@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Carts', {
@@ -11,20 +12,23 @@ module.exports = {
       user_id: {
         type: Sequelize.INTEGER
       },
-      items: {
+      user_email: {
         type: Sequelize.STRING
+      },
+      items: {
+        type: Sequelize.TEXT
       },
       subtotal: {
         type: Sequelize.INTEGER
-      },
-      shipping: {
-        type: Sequelize.BOOLEAN
       },
       total: {
         type: Sequelize.INTEGER
       },
       shipping_address: {
         type: Sequelize.STRING
+      },
+      receipt_url: {
+        type: Sequelize.TEXT
       },
       status: {
         type: Sequelize.STRING

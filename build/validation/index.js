@@ -13,7 +13,8 @@ const getValidator = validationName => {
     updatePassword: _rules.updatePassword,
     signIn: _rules.signIn,
     signUp: _rules.signUp,
-    addProduct: _rules.addProduct
+    addProduct: _rules.addProduct,
+    addCart: _rules.addCart
   };
   return rules[validationName];
 };

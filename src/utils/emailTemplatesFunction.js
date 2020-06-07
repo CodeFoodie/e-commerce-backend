@@ -3,8 +3,7 @@ import emailTemplates from './emailTemplates/index';
 const {
   welcome,
   passwordRecovery,
-  connectRequest,
-  requestFeedback,
+  makeOrder,
 } = emailTemplates;
 
 let html;
@@ -22,16 +21,10 @@ const emailTemplatesFunction = (category, data) => {
         subject: 'Recover your password',
         html,
       };
-    case 'connectRequest':
-      html = connectRequest(data);
+    case 'makeOrder':
+      html = makeOrder(data);
       return {
-        subject: 'New Connect Request',
-        html,
-      };
-    case 'requestFeedback':
-      html = requestFeedback(data);
-      return {
-        subject: 'Feedback for connect request',
+        subject: 'New order has been made!!',
         html,
       };
     default:

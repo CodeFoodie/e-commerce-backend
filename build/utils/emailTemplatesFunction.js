@@ -12,8 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const {
   welcome,
   passwordRecovery,
-  connectRequest,
-  requestFeedback
+  makeOrder
 } = _index.default;
 let html;
 
@@ -33,17 +32,10 @@ const emailTemplatesFunction = (category, data) => {
         html
       };
 
-    case 'connectRequest':
-      html = connectRequest(data);
+    case 'makeOrder':
+      html = makeOrder(data);
       return {
-        subject: 'New Connect Request',
-        html
-      };
-
-    case 'requestFeedback':
-      html = requestFeedback(data);
-      return {
-        subject: 'Feedback for connect request',
+        subject: 'New order has been made!!',
         html
       };
 

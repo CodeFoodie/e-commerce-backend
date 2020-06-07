@@ -5,265 +5,241 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+/* eslint-disable camelcase */
 const welcome = data => {
   const {
-    firstName,
+    first_name,
     link
   } = data;
   const theEmail = `
-  <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-      <style type="text/css" rel="stylesheet" media="all">  
-    @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,700&display=swap");
-    body {
-      width: 100% !important;
-      height: 100%;
-      margin: 0;
-      -webkit-text-size-adjust: none;
-    }
-    a {
-      color: #3869D4;
-    }
-    td {
-      word-break: break-word;
-    }
-    .preheader {
-      display: none !important;
-      visibility: hidden;
-      mso-hide: all;
-      font-size: 1px;
-      line-height: 1px;
-      max-height: 0;
-      max-width: 0;
-      opacity: 0;
-      overflow: hidden;
-    }    
-    body,
-    td,
-    th {
-      font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
-    }
-    td,
-    th {
-      font-size: 16px;
-    }
-    p {
-      margin: .4em 0 1.1875em;
-      font-size: 16px;
-      line-height: 1.625;
-    }
-    p.sub {
-      font-size: 13px;
-    }
-    .align-right {
-      text-align: right;
-    }
-    .align-left {
-      text-align: left;
-    }
-    .align-center {
-      text-align: center;
-    }
-    .button {
-      background-color: #ff8c00;
-      border-top: 10px solid #ff8c00;
-      border-right: 18px solid #ff8c00;
-      border-bottom: 10px solid #ff8c00;
-      border-left: 18px solid #ff8c00;
-      display: inline-block;
-      color: #FFF;
-      text-decoration: none;
-      border-radius: 3px;
-      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16);
-      -webkit-text-size-adjust: none;
-      box-sizing: border-box;
-    }
-    @media only screen and (max-width: 500px) {
-      .button {
-        width: 100% !important;
-        text-align: center !important;
-      }
-    }
-    body {
-      background-color: #883e67 !important;
-      color: #51545E;
-    }
-    p {
-      color: #51545E;
-    }
-    .email-wrapper {
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      -premailer-width: 100%;
-      -premailer-cellpadding: 0;
-      -premailer-cellspacing: 0;
-      background-color: #F2F4F6;
-    }
-    .email-content {
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      -premailer-width: 100%;
-      -premailer-cellpadding: 0;
-      -premailer-cellspacing: 0;
-    }
-    .email-masthead {
-      padding: 25px 0;
-      text-align: center;
-    }
-    .email-masthead_logo {
-      width: 94px;
-    }
-    .email-masthead_name {
-      font-size: 16px;
-      font-weight: bold;
-      color: #A8AAAF;
-      text-decoration: none;
-      text-shadow: 0 1px 0 white;
-    }
-    .email-body {
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      -premailer-width: 100%;
-      -premailer-cellpadding: 0;
-      -premailer-cellspacing: 0;
-    }
-    .email-body_inner {
-      width: 570px;
-      margin: 0 auto;
-      padding: 0;
-      -premailer-width: 570px;
-      -premailer-cellpadding: 0;
-      -premailer-cellspacing: 0;
-      background-color: #FFFFFF;
-    }
-    .email-footer {
-      width: 570px;
-      margin: 0 auto;
-      padding: 0;
-      -premailer-width: 570px;
-      -premailer-cellpadding: 0;
-      -premailer-cellspacing: 0;
-      text-align: center;
-    }
-    .email-footer p {
-      color: #A8AAAF;
-    }
-    .body-action {
-      width: 100%;
-      margin: 30px auto;
-      padding: 0;
-      -premailer-width: 100%;
-      -premailer-cellpadding: 0;
-      -premailer-cellspacing: 0;
-      text-align: center;
-    }
-    .body-sub {
-      margin-top: 25px;
-      padding-top: 25px;
-      border-top: 1px solid #EAEAEC;
-    }
-    .content-cell {
-      padding: 45px;
-    }
-    @media only screen and (max-width: 600px) {
-      .email-body_inner,
-      .email-footer {
-        width: 100% !important;
-      }
-    }
-    @media (prefers-color-scheme: dark) {
-      body,
-      .email-body,
-      .email-body_inner,
-      .email-content,
-      .email-wrapper,
-      .email-masthead,
-      .email-footer {
-        background-color: #333333 !important;
-        color: #FFF !important;
-      }
-      .email-masthead_name {
-        text-shadow: none !important;
-      }
-    }
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="telephone=no" name="format-detection">
+    <title></title>
+    <!--[if (mso 16)]>
+    <style type="text/css">
+    a {text-decoration: none;}
     </style>
-  </head>
-  <body>
-    <span class="preheader">Reset your password</span>
-    <table class="email-wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
-      <tr>
-        <td align="center">
-          <table class="email-content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
-            <tr>
-              <td class="email-masthead">
-                <p class="f-fallback email-masthead_name">
-                  <img src="https://res.cloudinary.com/torsami77/image/upload/v1581169722/logo_r2nlb6.png" alt="Logo">
-                </p>
-              </td>
-            </tr>
-            <tr>
-              <td class="email-body" width="570" cellpadding="0" cellspacing="0">
-                <table class="email-body_inner" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
-                  <tr>
-                    <td class="content-cell">
-                      <div class="f-fallback">
-                      <p><strong>Hi, ${firstName}</strong></p>
-                        <p>Resetting your password is easy. Just press the button below and follow the instructions. We'll have you up and running in no time.</p>
-                        <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0" role="presentation">
-                          <tr>
-                            <td align="center">
-                              <!-- Border based button
-           https://litmus.com/blog/a-guide-to-bulletproof-buttons-in-email-design -->
-                              <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+    <![endif]-->
+    <!--[if gte mso 9]><style>sup { font-size: 100% !important; }</style><![endif]-->
+    <!--[if !mso]><!-- -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i" rel="stylesheet">
+    <!--<![endif]-->
+</head>
+
+<body>
+    <div class="es-wrapper-color">
+        <!--[if gte mso 9]>
+      <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+        <v:fill type="tile" color="#f4f4f4"></v:fill>
+      </v:background>
+    <![endif]-->
+        <table class="es-wrapper" width="100%" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr class="gmail-fix" height="0">
+                    <td>
+                        <table width="600" cellspacing="0" cellpadding="0" border="0" align="center">
+                            <tbody>
                                 <tr>
-                                  <td align="center" >
-                                    <a href="${link}" class="f-fallback button" target="_blank"><font color="white">Reset Password</font></a>
-                                  </td>
+                                    <td cellpadding="0" cellspacing="0" border="0" style="line-height: 1px; min-width: 600px;" height="0"><img src="https://esputnik.com/repository/applications/images/blank.gif" style="display: block; max-height: 0px; min-height: 0px; min-width: 600px; width: 600px;" alt width="600" height="1"></td>
                                 </tr>
-                              </table>
-                            </td>
-                          </tr>
+                            </tbody>
                         </table>
-                        <p>If you did not request for password reset, please ignore this email or <a href="mailto:hello@dearmac.com">contact support</a> if you have questions.</p>
-                        <p>Thanks,
-                          <br>DearMac Team</p>
-                        <table class="body-sub" role="presentation">
-                          <tr>
-                            <td>
-                              <p class="f-fallback sub">If you’re having trouble with the button above, copy and paste the URL below into your web browser.</p>
-                              <p class="f-fallback sub">
-<a href="${link}" >${link}</a>
-                              </p>
-                            </td>
-                          </tr>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="esd-email-paddings" valign="top">
+                        <table class="es-content esd-header-popover" cellspacing="0" cellpadding="0" align="center">
+                            <tbody>
+                                <tr>
+                                    <td class="esd-stripe" style="background-color: #daa520;" esd-custom-block-id="6340" bgcolor="#DAA520" align="center">
+                                        <table class="es-content-body" style="background-color: transparent;" width="600" cellspacing="0" cellpadding="0" align="center">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="esd-structure" align="left">
+                                                        <table width="100%" cellspacing="0" cellpadding="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="esd-container-frame" width="600" valign="top" align="center">
+                                                                        <table style="background-color: #ffffff; border-radius: 4px; border-collapse: separate;" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td class="esd-block-text es-p35t es-p5b es-p30r es-p30l" align="center">
+                                                                                        <h1>Hi ${first_name},</h1>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="esd-block-spacer es-p5t es-p5b es-p20r es-p20l" bgcolor="#ffffff" align="center">
+                                                                                        <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td style="border-bottom: 1px solid #ffffff; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; height: 1px; width: 100%; margin: 0px;"></td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
-                      </div>
+                        <table class="es-content" cellspacing="0" cellpadding="0" align="center">
+                            <tbody>
+                                <tr>
+                                    <td class="esd-stripe" align="center">
+                                        <table class="es-content-body" style="background-color: #ffffff;" width="600" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="esd-structure" align="left">
+                                                        <table width="100%" cellspacing="0" cellpadding="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="esd-container-frame" width="600" valign="top" align="center">
+                                                                        <table style="background-color: #ffffff;" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td class="esd-block-text es-m-txt-l es-p20t es-p15b es-p30r es-p30l" bgcolor="#ffffff" align="left">
+                                                                                        <p>let's help you recover your password. Please, you need to confirm your account and create passowrd. Just tap the button bellow</p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="esd-structure es-p20b es-p30r es-p30l" align="left">
+                                                        <table width="100%" cellspacing="0" cellpadding="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="esd-container-frame" width="540" valign="top" align="center">
+                                                                        <table width="100%" cellspacing="0" cellpadding="0">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td class="esd-block-button es-p40t es-p40b es-p10r es-p10l" align="center"><span class="es-button-border" style="background: #daa520;"><a href="${link}" class="es-button" target="_blank" style="background: #daa520; border-color: #daa520;">Create Password</a></span></td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="es-content" cellspacing="0" cellpadding="0" align="center">
+                            <tbody>
+                                <tr>
+                                    <td class="esd-stripe" esd-custom-block-id="6344" align="center">
+                                        <table class="es-content-body" width="600" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="esd-structure" align="left">
+                                                        <table width="100%" cellspacing="0" cellpadding="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="esd-container-frame" width="600" valign="top" align="center">
+                                                                        <table style="border-radius: 4px; border-collapse: separate; background-color: #111111;" width="100%" cellspacing="0" cellpadding="0" bgcolor="#111111">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td class="esd-block-text es-m-txt-l es-p20t es-p15b es-p30r es-p30l" bgcolor="#ffffff" align="left">
+                                                                                        <p>If that doesn't work, copy and paste the following link in your browser</p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="esd-block-text es-m-txt-l es-p20t es-p15b es-p30r es-p30l" bgcolor="#ffffff" align="left">
+                                                                                        <p><a target="_blank" href="${link}">${link}</a></p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="esd-block-text es-m-txt-l es-p20t es-p15b es-p30r es-p30l" bgcolor="#ffffff" align="left">
+                                                                                        <p>If you have any questions, just reply to ths email--we're always happy to help out.<br><br>Cheers,<br>DBullsSquad&nbsp;Team</p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="es-content esd-footer-popover" cellspacing="0" cellpadding="0" align="center">
+                            <tbody>
+                                <tr>
+                                    <td class="esd-stripe" align="center">
+                                        <table class="es-content-body" style="background-color: transparent;" width="600" cellspacing="0" cellpadding="0" align="center">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="esd-structure" align="left">
+                                                        <table width="100%" cellspacing="0" cellpadding="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="esd-container-frame" width="600" valign="top" align="center">
+                                                                        <table width="100%" cellspacing="0" cellpadding="0">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td class="esd-block-spacer es-p10t es-p20b es-p20r es-p20l" align="center">
+                                                                                        <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td style="border-bottom: 1px solid #f4f4f4; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; height: 1px; width: 100%; margin: 0px;"></td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <table class="email-footer" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
-                  <tr>
-                    <td class="content-cell" align="center">
-                      <p class="f-fallback sub align-center">&copy; 2020 DearMac. All rights reserved.</p>
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-  </body>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
 </html>
     `;
   return theEmail;

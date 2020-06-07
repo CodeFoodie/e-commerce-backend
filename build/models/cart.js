@@ -1,15 +1,24 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const Cart = sequelize.define('Cart', {
+  const Carts = sequelize.define('Carts', {
     user_id: DataTypes.INTEGER,
-    items: DataTypes.STRING,
+    user_email: DataTypes.STRING,
+    items: DataTypes.TEXT,
     subtotal: DataTypes.INTEGER,
-    shipping: DataTypes.BOOLEAN,
     total: DataTypes.INTEGER,
     shipping_address: DataTypes.STRING,
+    receipt_url: DataTypes.TEXT,
     status: DataTypes.STRING
   }, {});
-  return Cart;
+
+  Carts.associate = models => {
+    Carts.belongsTo(models.Users, {
+      as: 'user',
+      foreignKey: 'user_id'
+    });
+  };
+
+  return Carts;
 };
 //# sourceMappingURL=cart.js.map

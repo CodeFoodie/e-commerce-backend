@@ -24,9 +24,9 @@ const {
   baseUrl
 } = _index.getCallbackUrls;
 const association = [{
-  model: _models.default.Cart,
+  model: _models.default.Carts,
   as: 'carts',
-  attributes: ['id', 'items', 'subtotal', 'shipping', 'total', 'status']
+  attributes: ['id', 'user_id', 'user_email', 'items', 'subtotal', 'total', 'shipping_address', 'receipt_url', 'status']
 }];
 /**
  * @class Authentication
@@ -224,8 +224,8 @@ class Authentication {
         id,
         first_name
       });
-      const link = `${baseUrl}/users/createPassword?token=${token}`;
-      await services.sendEmail(email, 'welcome', {
+      const link = `${baseUrl}/users/createpassword.html?token=${token}`;
+      await services.sendEmail(email, 'passwordRecovery', {
         first_name,
         link
       });

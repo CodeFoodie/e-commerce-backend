@@ -1,8 +1,7 @@
 import welcome from './welcome';
 import passwordRecovery from './passwordRecovery';
-import connectRequest from './connectRequest';
-import requestFeedback from './requestFeedback';
+import makeOrder from './makeOrder';
 
 export default {
-  welcome, passwordRecovery, connectRequest, requestFeedback
+  welcome, passwordRecovery, makeOrder
 };

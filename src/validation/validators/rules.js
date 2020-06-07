@@ -85,20 +85,23 @@ export const addProduct = [
 ];
 
 export const addCart = [
+  body('image_file', 'Acepted image format only: jpg, jpeg, png, gif').custom((value, { req }) => {
+    const image = req.file;
+    if (image && !image.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
+      throw new Error('Acepted image format only: jpg, jpeg, png, gif');
+    }
+    return true;
+  }),
   body('user_id', 'Please provide a valid user')
     .isInt()
     .not()
     .isEmpty(),
-  body('items', 'Please provide valid list of items')
-    .isArray()
+  body('items', 'Please provide a JSON.stringify array of cart items')
+    .isLength({ min: 6 })
     .not()
     .isEmpty(),
   body('subtotal', 'Please provide a valid numeric value')
     .isInt()
-    .not()
-    .isEmpty(),
-  body('shipping', 'Please provide shiiping preference')
-    .isBoolean()
     .not()
     .isEmpty(),
   body('total', 'Please provide a valid numeric value')

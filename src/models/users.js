@@ -12,9 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     is_admin: DataTypes.BOOLEAN,
     password: DataTypes.STRING
   }, {});
-  
+
   Users.associate = (models) => {
-    Users.hasMany(models.Cart, { as: 'carts', foreignKey: 'user_id' });
+    Users.hasMany(models.Carts, { as: 'carts', foreignKey: 'user_id' });
   };
   return Users;
 };

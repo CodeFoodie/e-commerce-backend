@@ -1,7 +1,24 @@
 /* eslint-disable max-len */
 /* eslint-disable camelcase */
 import models from '../models';
-import { status, successResponse, errorResponse } from '../utils/index';
+import * as services from '../services';
+import {
+  status, successResponse, errorResponse, getCallbackUrls
+} from '../utils/index';
+import middleWares from '../middlewares';
+
+const { baseUrl } = getCallbackUrls;
+
+const association = [
+  {
+    model: models.Users,
+    as: 'user',
+    attributes: ['first_name', 'last_name', 'mobile_number']
+  }
+];
+
+const { cloudUpload } = middleWares;
+const { cloudinary } = cloudUpload;
 
 /**
  * @class Cart
@@ -17,8 +34,20 @@ export default class Cart {
    * @returns {object} response body object
    */
   static async addCart(req, res) {
+    const result = await cloudinary.uploader.upload(req.file.path);
+    if (result.secure_url) {
+      req.body.receipt_url = result.secure_url;
+    } else {
+      return errorResponse(res, 500, 'Error uploading Image!, Please try again');
+    }
+
     try {
-      const cart = await models.Cart.create(req.body);
+      req.body.status = 'pending';
+      const cart = await models.Carts.create(req.body);
+      const { id } = cart;
+      const link = `${baseUrl}/vieworder.html?id=${id}`;
+      await services.sendEmail('torsami77@gmail.com', 'makeOrder', { link, id });
+      await services.sendEmail(req.body.user_email, 'makeOrder', { link, id });
       const response = cart.toJSON();
       return successResponse(res, status.created, 'Cart added Successfully', response);
     } catch (error) {
@@ -50,9 +79,9 @@ export default class Cart {
    * @returns {object} The cart details
    */
   static async getCartById(req, res) {
-    const { cartId } = req.params;
+    const { id } = req.params;
     try {
-      const result = await models.Cart.findOne(cartId);
+      const result = await models.Carts.findOne({ where: { id }, include: association });
       if (!result) {
         return errorResponse(res, 404, 'Cart not found');
       }
