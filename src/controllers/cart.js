@@ -46,7 +46,7 @@ export default class Cart {
       const cart = await models.Carts.create(req.body);
       const { id } = cart;
       const link = `${baseUrl}/vieworder.html?id=${id}`;
-      await services.sendEmail('torsami77@gmail.com', 'makeOrder', { link, id });
+      await services.sendEmail('dbsglobalacademy@gmail.com', 'makeOrder', { link, id });
       await services.sendEmail(req.body.user_email, 'makeOrder', { link, id });
       const response = cart.toJSON();
       return successResponse(res, status.created, 'Cart added Successfully', response);
