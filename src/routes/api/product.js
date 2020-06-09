@@ -15,8 +15,5 @@ const router = express.Router();
 router.post('/add', Authenticate.verifyToken, attachFile.single('image_file'), validate('addProduct'), addProduct);
 router.get('/getAll', getAllProducts);
 router.get('/getOne/:id', getProductById);
-/*
-router.put('/update', Authenticate.verifyToken, updateProduct);
-router.post('/delete/:id', Authenticate.verifyToken, deleteProduct);
-*/
+
 export default router;
