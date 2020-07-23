@@ -114,6 +114,7 @@ export default class Authentication {
       const token = await Jwt.generateToken({ id, first_name, is_admin });
       return successResponse(res, status.success, messages.signIn.success, response, token);
     } catch (error) {
+	console.log(error);
       return errorResponse(res, status.error, messages.signIn.error);
     }
   }

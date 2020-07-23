@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Products', [
@@ -98,3 +98,4 @@ module.exports = {
     return queryInterface.bulkDelete('Products', null, {});
   }
 };
+*/

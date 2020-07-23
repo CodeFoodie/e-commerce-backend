@@ -3,9 +3,11 @@
 module.exports = (sequelize, DataTypes) => {
   const Users = sequelize.define('Users', {
     email: DataTypes.STRING,
+    reference_number: DataTypes.STRING,
     mobile_number: DataTypes.STRING,
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
+    pack: DataTypes.STRING,
     state: DataTypes.STRING,
     local_government_area: DataTypes.STRING,
     address: DataTypes.STRING,

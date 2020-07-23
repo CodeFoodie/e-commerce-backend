@@ -189,6 +189,7 @@ class Authentication {
       });
       return (0, _index.successResponse)(res, _index.status.success, _index.messages.signIn.success, response, token);
     } catch (error) {
+      console.log(error);
       return (0, _index.errorResponse)(res, _index.status.error, _index.messages.signIn.error);
     }
   }
