@@ -24,14 +24,15 @@ export default class Product {
     if (!req.user.is_admin) {
       return errorResponse(res, 401, 'You need admin privilegde');
     }
-    const result = await cloudinary.uploader.upload(req.file.path);
+
+    try {
+const result = await cloudinary.uploader.upload(req.file.path);
     if (result.secure_url) {
       req.body.image_url = result.secure_url;
     } else {
       return errorResponse(res, 500, 'Error uploading Image!, Please try again');
     }
 
-    try {
       req.body.is_available = true;
       const product = await models.Products.create(req.body);
       const response = product.toJSON();

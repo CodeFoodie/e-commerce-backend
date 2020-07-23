@@ -4,9 +4,11 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Users', [{
       email: 'dbsglobalacademy@gmail.com',
+      reference_number: '112',
       mobile_number: '08037367767',
       first_name: 'Tega',
       last_name: 'Bassey',
+      pack: 'Starter',
       state: 'Plateau',
       local_government_area: 'Jos North',
       address: 'Nhub',

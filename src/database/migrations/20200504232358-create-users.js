@@ -11,6 +11,9 @@ module.exports = {
       email: {
         type: Sequelize.STRING
       },
+      reference_number: {
+        type: Sequelize.STRING
+      },
       mobile_number: {
         type: Sequelize.STRING
       },
@@ -18,6 +21,9 @@ module.exports = {
         type: Sequelize.STRING
       },
       last_name: {
+        type: Sequelize.STRING
+      },
+      pack: {
         type: Sequelize.STRING
       },
       state: {
