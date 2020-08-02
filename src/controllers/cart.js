@@ -50,12 +50,13 @@ export default class Cart {
         req.body.user_email =  userData.email;
       const cart = await models.Carts.create(req.body);
       const { id } = cart;
-      const link = `${baseUrl}/vieworder.html?id=${id}`;
+      const link = `${baseUrl}/viewOrder.html?id=${id}`;
       await services.sendEmail('dbsglobalacademy@gmail.com', 'makeOrder', { link, id });
-      await services.sendEmail(req.body.userData.email, 'makeOrder', { link, id });
+      await services.sendEmail(req.body.user_email, 'makeOrder', { link, id });
       const response = cart.toJSON();
       return successResponse(res, status.created, 'Cart added Successfully', response);
     } catch (error) {
+      console.log(error);
       return errorResponse(res, status.error, 'Unable to add cart, please try again');
     }
   }
